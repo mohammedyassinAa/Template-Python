@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'webapp/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <p>{{ welcome_message }}</p>
+    </header>
+    <main>
+        <h2>Liste des articles</h2>
+        <ul>
+            {% if articles %}
+                {% for article in articles %}
+                    <li>{{ article.title }} (publié le {{ article.publication_date }})</li>
+                {% endfor %}
+            {% else %}
+                <p>Aucun article n’est disponible.</p>
+            {% endif %}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; {{ year }}</p>
+    </footer>
+</body>
+</html>
